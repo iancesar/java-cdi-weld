@@ -26,15 +26,15 @@ public class UserController {
 	public Response getAll() {
 		List<Users> users = dao.findAll();
 
-		System.out.println("Total de users " + users.size());
-
 		return Response.ok(users).build();
 	}
 
 	@POST
 	public Response save(Users user) {
 
-		return Response.ok().build();
+		user = dao.save(user);
+
+		return Response.ok(user).build();
 	}
 
 }

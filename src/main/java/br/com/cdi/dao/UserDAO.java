@@ -22,4 +22,17 @@ public class UserDAO {
 		}
 	}
 
+	public Users save(Users user) {
+
+		String insert = "insert into users (name) values (:name)";
+
+		try (Connection con = sql.beginTransaction()) {
+			Integer id = con.createQuery(insert).addParameter("name", user.getName()).executeUpdate().getKey(Integer.class);
+			con.commit();
+			user.setId(id);
+			return user;
+		}
+
+	}
+
 }

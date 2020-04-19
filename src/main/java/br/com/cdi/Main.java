@@ -36,9 +36,13 @@ public class Main {
 
 		ctx.addApplicationListener(Listener.class.getName()); // Aplicando WELD Listner
 
-		tomcat.getConnector();
-
+		/*
+		 * Hotdeploy funciona apenas no modo debug
+		 */
 		tomcat.getHost().setAutoDeploy(true);
+		tomcat.getHost().setDeployOnStartup(true);
+
+		tomcat.getConnector();
 
 		tomcat.start();
 		tomcat.getServer().await();
