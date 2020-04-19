@@ -37,6 +37,9 @@ public class Main {
 		ctx.addApplicationListener(Listener.class.getName()); // Aplicando WELD Listner
 
 		tomcat.getConnector();
+
+		tomcat.getHost().setAutoDeploy(true);
+
 		tomcat.start();
 		tomcat.getServer().await();
 	}
